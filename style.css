@@ -209,9 +209,7 @@ h2.SubtitleText {
     border-bottom: 5rem solid #82FF00
 }
 /*I do not know why h2 always overrides subtitle class so I had to put it here, solve it later*/
-.subtitle {
-    
-}
+
 
 /*---------------------------------------------------------------------------------------------*/
 /*displaybox Styles */
@@ -579,4 +577,81 @@ a:hover {
     text-align: center;
     margin-top:20rem;
     
+}
+
+
+/* Mobile Quick Fixes, but need a better patch nexttime*/
+@media (max-width: 900px) {
+
+    html {
+        font-size: 5%; 
+    }
+    h1.FancyTitle {
+        font-size: 150rem;
+    }
+    .topBar {
+        flex-direction: column;
+        
+        padding: 2.5rem 5rem; flex-direction: row; /* 保持横向，但更紧凑 */ 
+        justify-content: space-between;
+    }
+
+    .pageTitleText {
+        font-size: 30rem;
+        margin: 10rem;
+        padding: 5rem;
+        border-bottom-width: 3rem;
+    }
+
+    .homeButton {
+        font-size: 30rem;
+        padding: 5rem;
+        margin: 10rem;
+    }
+
+
+
+    .workListSplitGrid {
+        grid-template-columns: 1fr; 
+        height: auto; 
+        padding: 20rem;
+    }
+
+    .showSectionGrid {
+        grid-template-columns: 1fr; 
+    }
+
+    
+    
+    .navigation {
+        
+        padding: 20rem;
+    }
+
+    .navbutton {
+        font-size: 50rem;
+        gap: 20rem;
+    }
+
+    
+
+    .ArticleContainer {
+        padding: 20rem;
+    }
+
+    .ArticleTitle {
+        font-size: 40rem;
+    }
+
+    .ArticleText {
+        font-size: 24rem;
+    }
+
+    /* 手机端隐藏大图区域 */
+    .largeImageDisplayGrid,
+    .largeImageBox,
+    .largeImage {
+        display: none !important;
+}
+
 }
