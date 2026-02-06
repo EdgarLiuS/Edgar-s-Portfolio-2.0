@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+            /* 占满整个窗口高度 */
+  margin: 0;               /* 去掉默认边距 */
+  background-color: black; /* 设置背景为黑色 */
+}
+
+canvas {
+  width: 200%;  
+  height: 200%; 
+  display: block;
+  margin: auto; /* 保持居中 */
+}
+
+
+
+
