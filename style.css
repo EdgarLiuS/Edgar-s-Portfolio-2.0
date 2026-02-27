@@ -1,7 +1,7 @@
 /*Setups*/
 /*---------------------------------------------------------------------------------------------*/
 html {
-    font-size: 7%;
+    font-size: 5%;
 }
 
 
@@ -578,10 +578,22 @@ a:hover {
     margin-top:20rem;
     
 }
-
+/*---------------------------------------------------------------------------------------------*/
+/* P5 Embed Styles */
+/*---------------------------------------------------------------------------------------------*/
+.p5Embed {
+    text-align: center;
+    margin-top: 20rem;
+    margin-bottom:1000rem;
+}
+.p5Container {
+    text-align: center;
+    top: 50%;
+    height: 100rem;
+}
 
 /* Mobile Quick Fixes, but need a better patch nexttime*/
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
 
     html {
         font-size: 5%; 
