@@ -45,7 +45,7 @@ function draw() {
   triangle(trigX, trigY, trigX+teethWid, trigY+teethLeng, trigX+2*teethWid, trigY);
   
   textSize(30)
-  text("BABYVAMPIRE.CO", 70,500);
+  text("BABYVAMPIRE", 70,500);
   textFont('Courier New');
   
   textSize(10)
