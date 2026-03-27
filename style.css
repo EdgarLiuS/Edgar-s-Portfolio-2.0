@@ -585,6 +585,7 @@ a:hover {
     text-align: center;
     margin-top: 20rem;
     margin-bottom:1000rem;
+    /*why 1000 rems?*/
 }
 .p5Container {
     text-align: center;
