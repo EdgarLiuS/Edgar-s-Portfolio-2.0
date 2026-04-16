@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>Encryptors - Edgar's Portfolio 2.0 Ver</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!--background image-->
+    <img id="bg-image" src="../assets/googiebuildingtexturedoutside1.jpg" alt="" style="display:none;">
+    <div class="topBar">
+        
+            <a href="../Index.html" ><button class="homeButton">Edgar's Portfolio</button></a>
+        
+        <div class="pageTitle">
+            <a href="../Index.html" ><button class="pageTitleText">Home</button></a>
+            <a href="https://edgar2384.itch.io/" ><button class="pageTitleText">Games</button></a>
+            <a href="../MyP5Works.html" ><button class="pageTitleText">P5</button></a>
+            <a href="../my2dworks.html" ><button class="pageTitleText">2D</button></a>
+            <a href="About.html" ><button class="pageTitleText">About Me</button></a>
+        </div>
+    </div>
+    <!---->
+    <header class="normalTitleContainer">
+        <h1 class="normalTitle">Unicode Encryptors</h1>
+        
+    </header>
+    <header  class="subtitle">
+        <h2 class="SubtitleText">XOR and Caesar Cipher</h2>
+    </header>
+    
+    <section class="ArticleSection">
+        <div class="ArticleContainer">
+            <div class="Encryptor">
+                <form id="EncryptorSection">
+                    <p for="inputText" class="FormText" >Input Text:</label><br>
+                    <textarea id="inputText" name="inputText" class="FormInput"></textarea><br><br>
+                    <button type="button" onclick="clearText()">Clear</button>
+                    <p for="inputText" class="FormText" >Inport Via:</label><br>
+                    <div class="Settings">
+                        <div class="grid-row">
+                            <button type="button" onclick="sampleText()">Sample Text</button>
+                            <button type="button" onclick="loadFile()">Load from File</button>
+                            <button type="button" onclick="saveToFile()">Save to File</button>
+                            <button type="button" onclick="readFromClip()">Read from Clipboard</button>
+                        </div>
+                    </div>
+                    <p for="inputText" class="FormText" >Settings:</label><br>
+                    <div class="Settings">
+                        <div class="grid-row">
+                        <p for="key">Key (Has to be a number):</p>
+                        <input type="text" id="key" name="key">
+                        <button type="button" onclick="generateRandomKey()">Random Key</button>
+                            <p for="mode" class="SettingsText">Cipher:</p>
+                            <select id="mode" name="mode">
+                                <option value="xor">XOR</option>
+                                <option value="caesar">Caesar</option>
+                            </select>
+
+                            <p for="processingMode" class="SettingsText">Processing Mode:</p>
+                            <select id="processingMode" name="processingMode">
+                                <option value="encrypt">Encrypt</option>
+                                <option value="decrypt">Decrypt</option>
+                            </select>
+
+                            <button type="button" onclick="switchMode()">Switch Mode</button>
+                        </div>
+                    </div>
+                    <button type="button" onclick="encrypt()" class="SubmitButton">ENCRYPT / DECRYPT IT</button>
+                    <p for="outputText"class="FormText">Output Text:</label><br>
+                    <textarea id="outputText" name="outputText" class="FormInput" readonly></textarea><br><br>
+                    <div class="grid-row">
+                        <button type="button" onclick="copyOutput()">Copy to Clipboard</button>
+                        <button type="button" onclick="copyKey()">Copy Key</button>
+                        <button type="button" onclick="swapText()">Swap</button>
+                    </div>
+                    
+                </form>
+                <p class="ArticleText">This is a simple encryptor that uses XOR and Caesar Cipher to encrypt and decrypt text. You can input your text, choose the cipher method, and get the encrypted or decrypted result. You can also import and export your text using files or clipboard.</p>
+                <p class="ArticleText">Instructions:</p>
+                <p class="ArticleText">1. Input your text in the "Input Text" area.</p>
+                <p class="ArticleText">2. Choose the cipher method (XOR or Caesar) and the processing mode (Encrypt or Decrypt).</p>
+                <p class="ArticleText">3. Click the "ENCRYPT / DECRYPT IT" button to get the result in the "Output Text" area.</p>
+                <p class="ArticleText">4. You can also use the buttons to clear the text, load and save from files, read and copy to clipboard, and generate a random key.</p>
+                <p class="ArticleText">Note: The key has to be a number for both ciphers. For XOR, the key will be applied to each character's Unicode code point. For Caesar, the key will be used as the shift value.</p>
+                <p class="ArticleText">Have fun encrypting and decrypting your messages!</p>
+            
+            </div>
+            
+        </div>
+    </section>
+    <footer class="Contacts">
+        <h2 class="ContactTitle">Get in Touch!</h2>
+        <p class="ContactInfo" ><a href="https://edgar2384.itch.io/" target="_blank">Itch</a></p>
+        <p class="ContactInfo" ><a href="https://www.instagram.com/csp_35255" target="_blank">Instagram</a></p>
+        <p class="ContactInfo" ><a href="https://www.linkedin.com/in/edgar-l-b6bb12346" target="_blank">LinkedIn</a></p>
+        <p class="ContactInfo" ><a href="https://x.com/es75657" target="_blank">X</a></p>
+        <p class="ContactInfo" ><a href="https://cara.app/cspr35255" target="_blank">Cara</a></p>
+        <p class="ContactInfo" ><a href="https://portfolio.newschool.edu/liue360/" target="_blank">Parsons</a></p>
+    </footer>
+</body>
+</html>
+<script src="../P5Works/Encryptor/Edgar-s-Encryptor.js"></script>
