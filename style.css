@@ -703,6 +703,74 @@ textarea{
     white-space: pre-wrap;   
     word-wrap: break-word;   
 }
+.grid-input {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20rem;
+    align-items: start;
+}
+.historyElement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: 20rem;
+    margin: 10rem 0;
+    text-align: left;
+    border-radius: 5rem;
+    background-color: #323232;
+    color: #82FF00;
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
+    font-size: 20rem;
+    border: none;
+    cursor: pointer;
+
+    text-shadow:
+        0rem calc(var(--shadow-gap) * 2) 0rem #82FF00,
+        0rem calc(var(--shadow-gap) * 4) 0rem #82FF00,
+        0rem calc(var(--shadow-gap) * 6) 0rem #82FF00;
+}
+
+.history-left {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.history-time {
+    font-size: 20rem;
+    opacity: 0.7;
+}
+
+
+.historyArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-height: 400px;      /* 固定高度 */
+    overflow-y: auto;       /* 超出时出现滚动条 */
+    padding-right: 10rem;   
+}
+.historyArea::-webkit-scrollbar {
+    width: 12px;
+}
+
+.historyArea::-webkit-scrollbar-track {
+    background: #696969;
+    border-radius: 10px;
+}
+
+.historyArea::-webkit-scrollbar-thumb {
+    background: #82FF00;
+    border-radius: 10px;
+}
+
+.historyArea::-webkit-scrollbar-thumb:hover {
+    background: #b4ff4d;
+}
 
 /*---------------------------------------------------------------------------------------------*/
 /* Article Styles */

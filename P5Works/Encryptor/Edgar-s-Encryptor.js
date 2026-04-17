@@ -117,7 +117,8 @@ function encrypt() {
             output = caesarDecrypt(input, key);
         }
     }
-
+    addHistory(input, cipher, mode, key, output);
+    
     document.getElementById("outputText").value = output;
 }
 function switchMode() {
@@ -136,6 +137,9 @@ function copyOutput() {
 function generateRandomKey() {
     const randomKey = Math.floor(Math.random() * 0x110);
     document.getElementById("key").value = randomKey;
+}
+function setKey(key) {
+    document.getElementById("key").value = key;
 }
 
 function clearText() {
@@ -206,6 +210,127 @@ function swapText() {
     document.getElementById("inputText").value = output;
     document.getElementById("outputText").value = input;
 }
+
+
+//--------------------------------------------------------------------------------------------------------------
+//history
+const historyKey = "encryptorHistory";
+function loadHistory() {
+    const raw = localStorage.getItem(historyKey);
+    if (!raw) return [];
+    try {
+        return JSON.parse(raw);
+    } catch {
+        return []; 
+    }
+}
+
+let maxHistory = 100;// 5mb limit, we got plenty of space for this
+function saveHistory(history) {
+    localStorage.setItem(historyKey, JSON.stringify(history));
+}
+    
+function addHistory(text, encryptor, processingMode,key, output) {
+    let record = {//record struct
+        time: Date.now(),
+        mode: encryptor,
+        processingMode: processingMode,//encrypt or decrypt
+        key: key,
+        input: text,
+        output: output
+    };
+
+    let history = loadHistory();
+    history.push(record);
+
+    if (history.length > maxHistory) {
+        let removed = history.shift();
+        removeHistoryButton(removed.time); //delete the oldest button
+    }
+
+    saveHistory(history);
+
+    addHistoryButton(record); // adds a button for the new record
+}
+
+
+function clearHistory() {
+    localStorage.removeItem(historyKey);
+
+    const area = document.getElementById("historyArea");
+    area.innerHTML = "";//wipe all buttons
+}
+
+//visual
+function addHistoryButton(record) {
+    const area = document.getElementById("historyArea");
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "historyElement";
+    btn.dataset.id = record.time;
+
+    //format time
+    const date = new Date(record.time);
+    const timeString = date.toLocaleString();
+
+    //preview (first 30 chars) + "..."
+    const inputPreview = record.input.slice(0, 30) + "...";
+    const outputPreview = record.output.slice(0, 30) + "...";
+
+    //display in button
+    btn.innerHTML = `
+        <div class="history-left">
+            <div>Input: ${inputPreview}</div>
+            <div>Key: ${record.key}</div>
+            <div>Output: ${outputPreview}</div>
+        </div>
+        <div class="history-time">${timeString}</div>
+    `;
+
+    btn.onclick = () => {
+        document.getElementById("inputText").value = record.input;
+        document.getElementById("key").value = record.key;
+        document.getElementById("processingMode").value = record.processingMode;
+        document.getElementById("mode").value = record.mode;
+        document.getElementById("outputText").value = record.output;
+    };
+    btn.title = 
+        `${inputPreview}
+        Key: ${record.key}
+        Processing Mode: ${record.processingMode}
+        Output: ${outputPreview}
+        Time: ${timeString}
+        Mode: ${record.mode}`;
+        
+
+
+    area.prepend(btn);//put to the top
+
+}
+
+
+
+
+function removeHistoryButton(id) {
+    const area = document.getElementById("historyArea");
+    const btn = area.querySelector(`button[data-id="${id}"]`);
+    if (btn) btn.remove();
+}
+
+function loadHistoryButtons() {
+    const history = loadHistory();
+    const area = document.getElementById("historyArea");
+    area.innerHTML = ""; //no duplication
+
+    history.forEach(record => {
+        addHistoryButton(record);
+    });
+}
+
+window.onload = loadHistoryButtons;
+
+
 //--------------------------------------------------------------------------------------------------------------
 //Debug
 let enc = xorEncrypt("滚滚长江东逝水，浪花淘尽英雄。是非成败转头空。青山依旧在，几度夕阳红。白发渔樵江渚上，惯看秋月春风。一壶浊酒喜相逢。古今多少事，都付笑谈中。", 0x1234);

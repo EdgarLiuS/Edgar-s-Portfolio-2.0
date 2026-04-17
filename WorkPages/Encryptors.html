@@ -38,10 +38,21 @@
         <div class="ArticleContainer">
             <div class="Encryptor">
                 <form id="EncryptorSection">
-                    <p for="inputText" class="FormText" >Input Text:</label><br>
-                    <textarea id="inputText" name="inputText" class="FormInput"></textarea><br><br>
+                    <div class="grid-input">
+                        <div class="inputBox">
+                            <p for="inputText" class="FormText" >Input Text:</label><br>
+                            <textarea id="inputText" name="inputText" class="FormInput"></textarea><br><br>
+                        </div>
+                        <div class="historyBox">
+                            <p for="history" class="FormText" >Input History:</label><br>
+                            <div class="historyArea" id="historyArea">
+                                
+                            </div>
+                            <button type="button" onclick="clearHistory()">Clear History</button>
+                        </div>
+                    </div>
                     <button type="button" onclick="clearText()">Clear</button>
-                    <p for="inputText" class="FormText" >Inport Via:</label><br>
+                    <p for="inputText" class="FormText" >Import Via:</label><br>
                     <div class="Settings">
                         <div class="grid-row">
                             <button type="button" onclick="sampleText()">Sample Text</button>
