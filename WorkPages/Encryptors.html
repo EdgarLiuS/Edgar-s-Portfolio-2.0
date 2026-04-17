@@ -70,12 +70,14 @@
                         <button type="button" onclick="generateRandomKey()">Random Key</button>
                             <p for="mode" class="SettingsText">Cipher:</p>
                             <select id="mode" name="mode">
-                                <option value="xor">XOR</option>
-                                <option value="caesar">Caesar</option>
-                                <option value="vigenere">Vigenère</option>
-                                <option value="morse">Morse Code</option>
-                                <option value="unicode">Pure Unicode</option>
-                                <option value="simpleUnicode">Simple Unicode</option>
+                                <option value="xor" title="A type of encryptor uses XOR calculation. Converts each character by applying XOR operation with the key. Use at your own risk.">XOR</option>
+                                <option value="caesar" title="A type of encryptor uses Caesar Cipher, simple, direct. Converts each character by shifting its Unicode value by the key. Use at your own risk.">Caesar</option>
+                                <option value="vigenere" title="A type of encryptor uses Vigenère Cipher, your text will be converted to unicode and processed with the Vigenère algorithm. Suitable for obfusing repetitive patterns. Use at your own risk.">Vigenère</option>
+                                <option value="morse" title="Converts your text to unicode first, then to Morse Code representation. Use at your own risk.">Morse Code</option>
+                                <option value="unicode" title="Converts your text to a detailed Unicode representation. Use at your own risk.">Pure Unicode</option>
+                                <option value="simpleUnicode" title="Converts your text to a simple Unicode representation. Use at your own risk.">Simple Unicode</option>
+                                <option value="rotate" title="A type of encryptor uses Bit Rotation, your text will be converted to unicode and rotated by the key. Use at your own risk.">Bit Rotation</option>
+                                <option value="atbash" title="A type of encryptor uses Atbash Cipher, your text will be converted to unicode and flipped to the other side. So your text will be so broken. Use at your own risk.">Atbash</option>
                             </select>
 
                             <p for="processingMode" class="SettingsText">Processing Mode:</p>

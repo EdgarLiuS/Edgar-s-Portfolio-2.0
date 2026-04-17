@@ -242,6 +242,51 @@ function pureUnicodeDecrypt(str) {
     return UnicodeEncoder(cps);
 }
 
+//--------------------------------------------------------------------------------------------------------------
+//Atbash Cipher 
+
+function atbashForUnicode(cps) {
+    const maxCodePoint = 0x10FFFF;
+    for(let i = 0; i < cps.length; i++){
+        cps[i] = maxCodePoint - cps[i];
+    }
+    return cps;
+}
+function atbashEncrypt(str) {
+    const cps = UnicodeDecoder(str);
+    const encrypted = atbashForUnicode(cps);
+    return UnicodeEncoder(encrypted);
+}
+function atbashDecrypt(str) {
+    const cps = UnicodeDecoder(str);
+    const decrypted = atbashForUnicode(cps);
+    return UnicodeEncoder(decrypted);
+}
+//--------------------------------------------------------------------------------------------------------------
+//Bit Rotation
+function rotateBits(cps, key, encrypt=true) {
+    //who ever needs this, needs this
+    const bitLength = 21; // Unicode code points fit in 21 bits
+    for(let i = 0; i < cps.length; i++){
+        if(encrypt){
+            cps[i] = ((cps[i] << key) | (cps[i] >> (bitLength - key))) & 0x1FFFFF;
+        } else {
+            cps[i] = ((cps[i] >> key) | (cps[i] << (bitLength - key))) & 0x1FFFFF;
+        }
+    }
+    return cps;
+}
+
+function rotateEncrypt(str, key) {
+    const cps = UnicodeDecoder(str);
+    const encrypted = rotateBits(cps, key, true);
+    return UnicodeEncoder(encrypted);
+}
+function rotateDecrypt(str, key) {
+    const cps = UnicodeDecoder(str);
+    const decrypted = rotateBits(cps, key, false);
+    return UnicodeEncoder(decrypted);
+}
 
 //--------------------------------------------------------------------------------------------------------------
 //DOM communication
@@ -299,6 +344,20 @@ function encrypt() {
             output = morseUnicode(input);
         } else {
             output = morseDeUnicode(input);
+        }
+    }
+    if (cipher === "atbash") {
+        if (mode === "encrypt") {
+            output = atbashEncrypt(input);
+        } else {
+            output = atbashDecrypt(input);
+        }
+    }
+    if (cipher === "rotate") {
+        if (mode === "encrypt") {
+            output = rotateEncrypt(input, key);
+        } else {
+            output = rotateDecrypt(input, key);
         }
     }
     addHistory(input, cipher, mode, key, output);
