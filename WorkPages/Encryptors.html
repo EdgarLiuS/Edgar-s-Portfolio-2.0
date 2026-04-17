@@ -42,6 +42,7 @@
                         <div class="inputBox">
                             <p for="inputText" class="FormText" >Input Text:</label><br>
                             <textarea id="inputText" name="inputText" class="FormInput"></textarea><br><br>
+                            <button type="button" onclick="clearText()">Clear Input</button>
                         </div>
                         <div class="historyBox">
                             <p for="history" class="FormText" >Input History:</label><br>
@@ -51,7 +52,7 @@
                             <button type="button" onclick="clearHistory()">Clear History</button>
                         </div>
                     </div>
-                    <button type="button" onclick="clearText()">Clear</button>
+                    
                     <p for="inputText" class="FormText" >Import Via:</label><br>
                     <div class="Settings">
                         <div class="grid-row">
@@ -71,6 +72,10 @@
                             <select id="mode" name="mode">
                                 <option value="xor">XOR</option>
                                 <option value="caesar">Caesar</option>
+                                <option value="vigenere">Vigenère</option>
+                                <option value="morse">Morse Code</option>
+                                <option value="unicode">Pure Unicode</option>
+                                <option value="simpleUnicode">Simple Unicode</option>
                             </select>
 
                             <p for="processingMode" class="SettingsText">Processing Mode:</p>
@@ -89,6 +94,7 @@
                         <button type="button" onclick="copyOutput()">Copy to Clipboard</button>
                         <button type="button" onclick="copyKey()">Copy Key</button>
                         <button type="button" onclick="swapText()">Swap</button>
+                        <button type="button" onclick="clearOutput()">Clear Output</button>
                     </div>
                     
                 </form>
