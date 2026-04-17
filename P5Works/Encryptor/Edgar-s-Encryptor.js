@@ -275,9 +275,9 @@ function addHistoryButton(record) {
     const timeString = date.toLocaleString();
 
     //preview (first 30 chars) + "..."
-    const inputPreview = record.input.slice(0, 30) + "...";
-    const outputPreview = record.output.slice(0, 30) + "...";
-
+    const inputPreview = escapeHTML(record.input.slice(0, 30) + "...");
+    const outputPreview = escapeHTML(record.output.slice(0, 30) + "...");
+    //const keyPreview = escapeHTML(record.key);
     //display in button
     btn.innerHTML = `
         <div class="history-left">
@@ -309,6 +309,15 @@ function addHistoryButton(record) {
 
 }
 
+function escapeHTML(str) {
+    //prevent some naughty code
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
 
 
 
